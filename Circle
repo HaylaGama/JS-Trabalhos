@@ -1,0 +1,41 @@
+let cor;
+let circuloX; // horizontal
+let circuloY; // vertical
+
+let posicaoHorizontal2; // x 
+let posicaoVertical2; // y
+
+function setup() {
+  createCanvas(400, 400);// width x height
+    background("pink");
+  cor = color(random(0,255),random(0,255),random(0,255));
+  circuloX = [0,0,0];
+  circuloY = [random(height), random(height), random(height)]
+  
+  textFont("Georgia");
+  textSize(30)
+  textAlign(CENTER,TOP);
+}
+
+function draw() {
+  text("meu projeto!",200,200)
+    
+  fill(cor)
+  
+    // console.log(circuloX length);
+  for (let contador in circuloX) {
+    console.log(contador);
+    circle(circuloX[contador], circuloY[contador], 50);
+    circuloX[contador] += random(0, 3);
+    circuloY[contador] += random(-3, 3);
+
+    if (circuloX[contador] >= width) {
+      circuloX[contador] = 0;
+      circuloY[contador] = random(height);
+    }
+  }
+
+  if (mouseIsPressed) {
+    cor = color(random(0, 255), random(0, 255), random(0, 255), random(0, 100));
+  }
+}
